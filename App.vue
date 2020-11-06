@@ -2,7 +2,7 @@
   <view class="container">
     <text class="text-color-primary">Lista de Contatos</text>
     <button title="Acesse a Lista de Contatos" :on-press="getContatos"/>
-    <text vfor="contacts in contact" :key="Contacts.Fields.FirstName">{{Contacts.Fields.FirstName}}</text>
+    <text vfor="contacts in contact" :key="contactid">{{contact.Fields.FirstName}}</text>
   </view>
 </template>
 
