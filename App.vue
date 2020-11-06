@@ -1,11 +1,8 @@
 <template>
   <view class="container">
     <text class="text-color-primary">Lista de Contatos</text>
-    <button title="Acesse a Lista de Contatos" :on-press="getLocation"/>
-    <flat-list
-      :data="contact"
-      :render-item="(item) => renderList(item)"
-    />
+    <button title="Acesse a Lista de Contatos" :on-press="getContatos"/>
+    <text vfor="contacts in contact" :key="Contacts.Fields.FirstName">{{Contacts.Fields.FirstName}}</text>
   </view>
 </template>
 
@@ -18,18 +15,19 @@
     data() {
       return {
         message: "Hello World",
-        errorMessage: ""
+        errorMessage: "",
+        contact: []
       };
     },
     methods: {
-       getLocation: function() {
+       getContatos: function() {
          Permissions.askAsync(Permissions.CONTACTS)
           .then(status => {
              if (!status.granted) {
                this.errorMessage = "Acesso Negado";
              } else if (status.granted) {
                  const contact = Contacts.getContactsAsync({
-                   fields: [Contacts.PHONE_NUMBERS],
+                   fields: [Contacts.Fields.FirstName],
                    pageXOffset:0
                  });
                  if (contact.total > 0) {
@@ -38,12 +36,8 @@
              }
           })
        },
-       renderList: function (item){
-           return (<Text>{item.contact}</Text>)
-       }
     }
   };
-
 </script>
 
 <style>
