@@ -34,7 +34,7 @@
                  });
                  if (contact.total > 0) {
                      this.setState({
-                         contact:contac
+                         contact: contact.data
                      })
                  }
              }
