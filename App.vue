@@ -12,11 +12,13 @@
   import * as Permissions from "expo-permissions";
   import * as Contacts from 'expo-contacts';
   export default {
+    state(){
+       contact: []
+    },
     data() {
       return {
         message: "Hello World",
         errorMessage: "",
-        contact: []
       };
     },
     methods: {
@@ -31,7 +33,9 @@
                    pageXOffset:0
                  });
                  if (contact.total > 0) {
-                     contact: contact.data
+                     this.setState({
+                         contact:contac
+                     })
                  }
              }
           })
