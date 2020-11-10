@@ -2,7 +2,8 @@
   <view class="container">
     <text class="text-color-primary">Lista de Contatos</text>
     <button title="Acesse a Lista de Contatos" :on-press="getContatos"/>
-    <text vfor="contacts in contact" :key="contactid">{{contact.Fields.FirstName}}</text>
+    <text>{{this.contact}}</text> 
+    <text class="text-error">{{ errorMessage }}</text>
   </view>
 </template>
 
@@ -13,12 +14,13 @@
   import * as Contacts from 'expo-contacts';
   export default {
     state(){
-       contact: []
+       
     },
     data() {
       return {
         message: "Hello World",
         errorMessage: "",
+        contact: {}
       };
     },
     methods: {
@@ -28,15 +30,11 @@
              if (!status.granted) {
                this.errorMessage = "Acesso Negado";
              } else if (status.granted) {
-                 const contact = Contacts.getContactsAsync({
-                   fields: [Contacts.Fields.FirstName],
-                   pageXOffset:0
+                 const { data } = Contacts.getContactsAsync({
+                     fields: [Contacts.Fields.FirstName],
                  });
-                 if (contact.total > 0) {
-                     this.setState({
-                         contact: contact.data
-                     })
-                 }
+                 this.contact = data;
+                 this.errorMessage = "Funcionou!!";
              }
           })
        },
