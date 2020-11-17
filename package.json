@@ -19,7 +19,8 @@
     "react-native-web": "~0.13.12",
     "vue-native-core": "^0.1.4",
     "vue-native-helper": "^0.1.4",
-    "vue-setstate": "0.0.4"
+    "vue-setstate": "0.0.4",
+    "expo-permissions": "~9.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
