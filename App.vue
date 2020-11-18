@@ -27,7 +27,7 @@
           } else if (status.granted) {
               this.errorMessage = "FUNCIONOOOOU!!!";
               const { data } = Contacts.getContactsAsync({
-                  fields: [Contacts.Fields.Emails],
+                  fields: [Contacts.Fields.PhoneNumber],
               });
 
               if (data.length > 0) {
